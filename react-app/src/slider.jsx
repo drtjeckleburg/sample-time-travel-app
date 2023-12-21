@@ -1,6 +1,6 @@
 //import React, { useState, forwardRef, useImperativeHandle } from 'react';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
 
 const valuetext = (value) => `${value}`;
 
@@ -12,7 +12,32 @@ const generateMarks = (min, max, step) => {
   return marks;
 };
 
-const TimeSlider = ({sliderValue, setSliderValue}) => {
+//function out here that has query body
+
+//function that runs the query
+
+const TimeSlider = ({ sliderValue, setSliderValue }) => {
+  // call them inside of the slider
+
+  /* const refreshData = useCallback(
+    () =>
+      issueQuery(GenerateQueryBody(ledger, sliderValue), apiKey)
+        .then((response) => {
+          setEntities(response.data);
+          setSelected(response.data[0]);
+        })
+        .catch((error) => {
+          console.log(error);
+        }),
+    [setEntities, setSelected, sliderValue]
+  );
+
+  useEffect(() => { 
+    //if (entities.length > 0) return;
+    refreshData();
+  }, [sliderValue]); */ //replace with nothing that means it runs on 'mount'
+
+  // get query back adn se
 
   const min = 0; // Minimum value
   const max = 100; // Maximum value
@@ -40,7 +65,6 @@ const TimeSlider = ({sliderValue, setSliderValue}) => {
   );
 };
 
-TimeSlider.displayName = 'TimeSlider';
+TimeSlider.displayName = "TimeSlider";
 
-
-export default TimeSlider;
+export default TimeSlider; // don't have to destructure the name

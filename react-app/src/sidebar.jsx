@@ -1,5 +1,5 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Menu, Transition } from '@headlessui/react'
+import { Fragment, useState } from "react";
+import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   CalendarIcon,
@@ -8,33 +8,30 @@ import {
   HomeIcon,
   UsersIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
-import {  MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import TableComponent from './table'
-import TimeSlider from './slider';
-
-
+} from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"; //curly braces destructure
+import TableComponent from "./table";
+import TimeSlider from "./slider";
 
 const navigation = [
-  { name: 'Table', href: '#', icon: HomeIcon, current: true },
-  { name: 'Chart', href: '#', icon: UsersIcon, current: false },
-  { name: 'Time Travel', href: '#', icon: FolderIcon, current: false },
-  { name: 'H istory', href: '#', icon: CalendarIcon, current: false },
-]
+  { name: "Table", href: "#", icon: HomeIcon, current: true },
+  { name: "Chart", href: "#", icon: UsersIcon, current: false },
+  { name: "Time Travel", href: "#", icon: FolderIcon, current: false },
+  { name: "H istory", href: "#", icon: CalendarIcon, current: false },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
-
-const Sidebar= () => {
+const Sidebar = () => {
   const [sliderValue, setSliderValue] = useState(1);
   const [activeTab] = useState(navigation[0].name);
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const renderTabContent = () => {
     switch (activeTab) {
-      case 'Table':
+      case "Table":
         return <TableComponent sliderValue={sliderValue} />;
       default:
         return null;
@@ -52,7 +49,11 @@ const Sidebar= () => {
       */}
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
-          <Dialog as="div" className="relative z-50 lg:hidden" onClose={setSidebarOpen}>
+          <Dialog
+            as="div"
+            className="relative z-50 lg:hidden"
+            onClose={setSidebarOpen}
+          >
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -86,9 +87,16 @@ const Sidebar= () => {
                     leaveTo="opacity-0"
                   >
                     <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
-                      <button type="button" className="-m-2.5 p-2.5" onClick={() => setSidebarOpen(false)}>
+                      <button
+                        type="button"
+                        className="-m-2.5 p-2.5"
+                        onClick={() => setSidebarOpen(false)}
+                      >
                         <span className="sr-only">Close sidebar</span>
-                        <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                        <XMarkIcon
+                          className="h-6 w-6 text-white"
+                          aria-hidden="true"
+                        />
                       </button>
                     </div>
                   </Transition.Child>
@@ -111,15 +119,17 @@ const Sidebar= () => {
                                   href={item.href}
                                   className={classNames(
                                     item.current
-                                      ? 'bg-indigo-700 text-white'
-                                      : 'text-indigo-200 hover:text-white hover:bg-indigo-700',
-                                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                                      ? "bg-indigo-700 text-white"
+                                      : "text-indigo-200 hover:text-white hover:bg-indigo-700",
+                                    "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                                   )}
                                 >
                                   <item.icon
                                     className={classNames(
-                                      item.current ? 'text-white' : 'text-indigo-200 group-hover:text-white',
-                                      'h-6 w-6 shrink-0'
+                                      item.current
+                                        ? "text-white"
+                                        : "text-indigo-200 group-hover:text-white",
+                                      "h-6 w-6 shrink-0"
                                     )}
                                     aria-hidden="true"
                                   />
@@ -129,8 +139,6 @@ const Sidebar= () => {
                             ))}
                           </ul>
                         </li>
-                        
-                         
 
                         <li className="mt-auto">
                           <a
@@ -174,15 +182,17 @@ const Sidebar= () => {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-indigo-700 text-white'
-                              : 'text-indigo-200 hover:text-white hover:bg-indigo-700',
-                            'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                              ? "bg-indigo-700 text-white"
+                              : "text-indigo-200 hover:text-white hover:bg-indigo-700",
+                            "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                           )}
                         >
                           <item.icon
                             className={classNames(
-                              item.current ? 'text-white' : 'text-indigo-200 group-hover:text-white',
-                              'h-6 w-6 shrink-0'
+                              item.current
+                                ? "text-white"
+                                : "text-indigo-200 group-hover:text-white",
+                              "h-6 w-6 shrink-0"
                             )}
                             aria-hidden="true"
                           />
@@ -192,9 +202,7 @@ const Sidebar= () => {
                     ))}
                   </ul>
                 </li>
-                <li>
-                  
-                </li>
+                <li></li>
                 <li className="mt-auto">
                   <a
                     href="#"
@@ -214,13 +222,20 @@ const Sidebar= () => {
 
         <div className="lg:pl-72">
           <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-            <button type="button" className="-m-2.5 p-2.5 text-gray-700 lg:hidden" onClick={() => setSidebarOpen(true)}>
+            <button
+              type="button"
+              className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+              onClick={() => setSidebarOpen(true)}
+            >
               <span className="sr-only">Open sidebar</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
 
             {/* Separator */}
-            <div className="h-6 w-px bg-gray-900/10 lg:hidden" aria-hidden="true" />
+            <div
+              className="h-6 w-px bg-gray-900/10 lg:hidden"
+              aria-hidden="true"
+            />
 
             <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
               <form className="relative flex flex-1" action="#" method="GET">
@@ -231,19 +246,22 @@ const Sidebar= () => {
                   className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
                   aria-hidden="true"
                 />
-                 <div className="px-4 sm:px-6 lg:px-8">
-                  <TimeSlider sliderValue={sliderValue} setSliderValue={setSliderValue}/>
-        </div>
+                <div className="px-4 sm:px-6 lg:px-8">
+                  <TimeSlider
+                    sliderValue={sliderValue}
+                    setSliderValue={setSliderValue}
+                  />
+                </div>
               </form>
               <div className="flex items-center gap-x-4 lg:gap-x-6">
-                
-
                 {/* Separator */}
-                <div className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10" aria-hidden="true" />
+                <div
+                  className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10"
+                  aria-hidden="true"
+                />
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative">
-                  
                   <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"
@@ -252,24 +270,21 @@ const Sidebar= () => {
                     leave="transition ease-in duration-75"
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
-                  >
-                   
-                  </Transition>
+                  ></Transition>
                 </Menu>
               </div>
             </div>
           </div>
 
           <main className="py-10">
-        <div className="px-4 sm:px-6 lg:px-8">
-          {renderTabContent()} {/* Render the active tab content */}
-        </div>
-      </main>
+            <div className="px-4 sm:px-6 lg:px-8">
+              {renderTabContent()} {/* Render the active tab content */}
+            </div>
+          </main>
         </div>
       </div>
-
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
