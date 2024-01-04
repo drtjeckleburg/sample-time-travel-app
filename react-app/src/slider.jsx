@@ -25,10 +25,9 @@ const marks = [
 ];
 
 const TimeSlider = ({ sliderValue, setSliderValue }) => {
-  const [maxT, setMaxT] = useState(1); //declare state initialize state value and setter
+  const [maxT, setMaxT] = useState(1);
 
   const refreshData = () => {
-    //lowercase is a function capital letters are for components -> returning jsx rendered in dom
     console.log("refresh data called");
     HitAPI(ToggleDimensions(ledger), apiKey, history)
       .then((response) => {
@@ -44,13 +43,11 @@ const TimeSlider = ({ sliderValue, setSliderValue }) => {
 
   useEffect(() => {
     refreshData();
-  }, []); //empty dependency array for useEffect means it will run on mount
+  }, []);
 
   const handleSliderChange = (event, newValue) => {
     setSliderValue(newValue);
   };
-
-  //const marks = [1, maxT, 10];
 
   function valuetext(value) {
     return `${value}°C`;
