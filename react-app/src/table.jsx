@@ -1,36 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
+import { TableQuery, HitAPI, query } from "./fluree-client";
 const apiKey = import.meta.env.VITE_API_KEY;
 const ledger = import.meta.env.VITE_LEDGER;
-import axios from "axios";
-
-function GenerateQueryBody(ledger, currentValue) {
-  return {
-    from: ledger,
-    where: {
-      "@id": "?subject",
-      country: "?country",
-      score: "?score",
-      year: "?year",
-    },
-    select: {
-      "?subject": ["country", "score", "year"],
-    },
-    opts: {
-      orderBy: ["ASC", "?score"],
-    },
-    t: currentValue,
-  };
-}
-
-const issueQuery = (queryBody, apiKey) => {
-  return axios.post("http://localhost:58090/fluree/query", queryBody, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: apiKey,
-      Accept: "text/plain",
-    },
-  });
-};
 
 export const TableComponent = ({ sliderValue }) => {
   const timeSliderRef = useRef(); //certain reference point
@@ -39,7 +10,7 @@ export const TableComponent = ({ sliderValue }) => {
 
   const refreshData = useCallback(
     () =>
-      issueQuery(GenerateQueryBody(ledger, sliderValue), apiKey)
+      HitAPI(TableQuery(ledger, sliderValue), apiKey, query)
         .then((response) => {
           setEntities(response.data);
           setSelected(response.data[0]); //actually sets state value
