@@ -2,9 +2,9 @@ import axios from "axios";
 
 export const query = "http://localhost:58090/fluree/query";
 
-const transact = "http://localhost:58090/fluree/transact";
+export const transact = "http://localhost:58090/fluree/transact";
 
-const history = "http://localhost:58090/fluree/history";
+export const history = "http://localhost:58090/fluree/history";
 
 export function TableQuery(ledger, currentValue) {
   /*
@@ -36,4 +36,15 @@ export function HitAPI(queryBody, apiKey, api) {
       Accept: "text/plain",
     },
   });
+}
+
+export function ToggleDimensions(ledger) {
+  return {
+    "@context": {
+      f: "https://ns.flur.ee/ledger#",
+    },
+    from: ledger,
+    t: { at: "latest" },
+    "commit-details": true,
+  };
 }

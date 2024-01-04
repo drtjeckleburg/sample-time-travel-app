@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
+import { TableQuery, HitAPI, query } from "./fluree-client";
 const apiKey = import.meta.env.VITE_API_KEY;
 const ledger = import.meta.env.VITE_LEDGER;
-import { TableQuery, HitAPI, query } from "./fluree-client";
 
 export const TableComponent = ({ sliderValue }) => {
   const timeSliderRef = useRef(); //certain reference point
