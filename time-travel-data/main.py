@@ -1,10 +1,9 @@
 from package.clean_data import convert_csv_to_dict
 from package.nexus_api import transact_to_nexus
 
-# TODO import config vals from .env? figure out how the fuck that works
 file_path = 'data/hapiscore_whr.csv'
-dataset_id = "test2"
-api_key = "FQse8miotpUMcU8NKT5QPmJ1cSQe3VBNZrlOBb8_bs0WO9IWUj-pOHu8CVFbs-ZMFlQqSQpYMRu5ts_i_KixWg"
+dataset_id = "YOUR DATASET ID HERE"
+api_key = "YOUR API KEY HERE"
 url = "http://localhost:58090/fluree/transact"
 # url = "http://data.flur.ee/fluree/transact"
 
