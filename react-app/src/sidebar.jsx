@@ -2,22 +2,15 @@ import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
-  CalendarIcon,
   Cog6ToothIcon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
   XMarkIcon,
+  TableCellsIcon,
 } from "@heroicons/react/24/outline";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"; //curly braces destructure
 import TableComponent from "./table";
 import TimeSlider from "./slider";
 
 const navigation = [
-  { name: "Table", href: "#", icon: HomeIcon, current: true },
-  { name: "Chart", href: "#", icon: UsersIcon, current: false },
-  { name: "Time Travel", href: "#", icon: FolderIcon, current: false },
-  { name: "H istory", href: "#", icon: CalendarIcon, current: false },
+  { name: "Table", href: "#", icon: TableCellsIcon, current: true },
 ];
 
 function classNames(...classes) {
@@ -242,10 +235,6 @@ const Sidebar = () => {
                 <label htmlFor="search-field" className="sr-only">
                   Time Travel
                 </label>
-                <MagnifyingGlassIcon
-                  className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
-                  aria-hidden="true"
-                />
                 <div className="px-4 sm:px-6 lg:px-8">
                   <TimeSlider
                     sliderValue={sliderValue}

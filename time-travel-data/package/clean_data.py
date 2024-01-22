@@ -16,10 +16,16 @@ def convert_csv_to_dict(filepath):
         country = row[0]
         for i in range(1, len(row)):
             year = int(header[i])
-            score = int(row[i]) if pd.notna(row[i]) else "NaN"
-            if year not in result:
-                result[year] = []
-            result[year].append(
-                {"country": country, "year": year, "score": score})
+            if pd.notna(row[i]):
+                score = int(row[i])
+                if year not in result:
+                    result[year] = []
+                result[year].append(
+                    {"country": country, "year": year, "score": score})
+            else:
+                if year not in result:
+                    result[year] = []
+                result[year].append(
+                    {"country": country, "year": year})
 
     return result

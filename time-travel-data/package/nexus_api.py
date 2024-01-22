@@ -23,6 +23,7 @@ def transact_to_nexus(data_dict, dataset_id, api_key, url):
             },
             "insert": data_dict[year],
         }
+      
 
         headers = {
             "Content-Type": "application/json",
@@ -33,5 +34,4 @@ def transact_to_nexus(data_dict, dataset_id, api_key, url):
         response = requests.post(url, headers=headers,
                                  json=transaction)
         data = response.json()
-        print(data)
-        time.sleep(5)
+       
